@@ -1,4 +1,6 @@
 import numpy as np
+from keras.utils import to_categorical
+from scipy.special import softmax
 
 def unit_vector(vector):
     # convert the input vector to unit vector
@@ -14,7 +16,7 @@ def generateAnswer(x,y,directions):
 	# find the correct direction lable for x,y samples by
 	# finding the angle between the vector [x, y] and the
 	# vectors provided in directions.
-	# For this application directions will always have 4 
+	# For this application directions will always have 2 
 	# vectors.
     indexes = []
     
@@ -54,3 +56,18 @@ def generateSamples(size):
     x = 10*(2*np.random.rand(size)-1)
     y = 10*(2*np.random.rand(size)-1)
     return x,y
+
+def trainOne(x,y,thetas,directions):
+	x = [x]
+	y = [y]
+	answers = generateAnswer(x,y,directions)
+	answersCat = to_categorical(answers)
+	
+	xy = np.column_stack((x,y))
+	z = np.matmul(xy, np.transpose(thetas))
+	tempA = softmax(z)
+	tempAns = answersCat[:]
+	tempError = tempAns - tempA
+	delta = np.outer(tempError,xy)
+
+	return delta, z, answers,answersCat
