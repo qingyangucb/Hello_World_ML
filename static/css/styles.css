@@ -10,10 +10,10 @@ body {
   font-family: “Copperplate Gothic Bold”, sans-serif;
   color: #ffffff;
   /*text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 white;*/
-  font-size: 20px;
+  font-size: 18px;
   /*margin-left: 15px;*/
-  margin-bottom:30px
-  margin-top: 100px;
+  margin-bottom:15px
+  margin-top: 50px;
 }
 
 .text-justify {
@@ -22,7 +22,7 @@ body {
 
 .navbar-custom {
 
-    background-color: #ff2400
+  background-color: #ff2400
 
 }
 /* change the brand and text color */
@@ -37,12 +37,12 @@ body {
 }
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-    color: black;
+  color: black;
 }
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .img-center-land-page {
@@ -73,20 +73,32 @@ canvas {
   font-family: “Copperplate Gothic Bold”, sans-serif;
   color: #ffffff;
   /*text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 white;*/
-  font-size: 20px;
+  font-size: 18px;
   /*margin-left: 15px;*/
   margin-bottom:50px
   margin-top: 100px;
 }
 
-.button{
-  
+.modebar{
+  display: none !important;
+}
+
+.interactive{
+  width: 85px;
+  height: 35px;
+  display: block;
+  margin-top: 0px;
   font-family: “Copperplate Gothic Bold”, sans-serif;
   color: #ff2400;
   /*text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 white;*/
-  font-size: 15px;
-  /*margin-left: 15px;*/
-
+  font-size: 13px;
+  /*margin-left: 15px;*/  
+  font-weight: bold;
+  text-align: center;
 }
 
+::placeholder {
+  color: #ff2400;
+  
 
+}

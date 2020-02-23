@@ -26,9 +26,9 @@
   <!-- ****************************** Intro ****************************** -->
   <p>&nbsp</p>
   <p>&nbsp</p>
-  <div class = 'col-md-6 col-md-offset-3 intro'>
+  <div class = 'col-md-8 col-md-offset-2 intro'>
     <row>
-      <p>Welcome to Hello World of Machine Learning. This website will demonstrate to you in the most foundamental form the process and meaning of neural network training and decision making. Please enjoy, thanks.
+      <p>Welcome to the world of machine learning that is infinite in dimension. In this website I will show you how a machine actually learns, by bringing its complexity down to the most basic case, a 2D vector space.
       </p>
     </row>
   </div>
@@ -38,12 +38,10 @@
     <div class="row">
       <row>
         <div class="col-md-5 col-md-offset-1 plot-container">
-          <canvas id="plot1" height="175" style="border:1px solid #d3d3d3;">
-          Your browser does not support the HTML5 canvas tag.</canvas>
+          <div id= "plot1"></div>
         </div>
         <div class="col-md-5 plot-container">
-          <canvas id="plot2" height="175" style="border:1px solid #d3d3d3;">
-          Your browser does not support the HTML5 canvas tag.</canvas>
+          <div id= "plot2"></div>
         </div>
       </row>
     </div>
@@ -52,49 +50,49 @@
 
 
   <p>&nbsp</p>
-    <!-- ****************************** Inputs ****************************** -->
+  <!-- ****************************** Inputs ****************************** -->
   <div class = "container">
-  <div class="input col-md-1 col-md-offset-3">
-    <row>
-      <input type="text" class="form-control" name="weight_a" id="x1y1" placeholder="x1,y1">
-    </row>
+    <div class="input col-md-1 col-md-offset-3">
+      <row>
+        <input type="text" class = "interactive" id="direction1" placeholder=" Directions">
+      </row>
+    </div>
+    <div class="input col-md-1">
+      <row>
+        <input type="text" class = "interactive" id="dataSize" placeholder="Sample Size">
+      </row>
+    </div>
+    <div class="button col-md-1">
+      <row>
+        <button class = "interactive" onclick="generateData()">Initiate</button>
+      </row>
+    </div>
+    <div class="button col-md-1">
+      <row>
+        <button class = "interactive" onclick="TrainOne()">Train One</button>
+      </row>
+    </div>
+    <div class="button col-md-1">
+      <row>
+        <button class = "interactive" onclick="TrainAll()">Train All</button>
+      </row>
+    </div>
+    <div class="input col-md-1">
+      <row>
+        <input type="text" class = "interactive" id="dataSize" placeholder="Accuracy">
+      </row>
+    </div>
   </div>
-  <div class="input col-md-1">
-    <row>
-      <input type="text" class="form-control" name="weight_a" id="x2y2" placeholder="x2,y2">
-    </row>
-  </div>
-  <div class="input col-md-1">
-    <row>
-      <input type="text" class="form-control" name="weight_a" id="dataSize" placeholder="Data Size">
-    </row>
-  </div>
-  <div class="button col-md-1">
-    <row>
-      <button onclick="generateData()">Generate Data</button>
-    </row>
-  </div>
-  <div class="button col-md-1">
-    <row>
-      <button onclick="TrainOne()">Train One</button>
-    </row>
-  </div>
-  <div class="button col-md-1">
-    <row>
-      <button onclick="TrainAll()">Train All</button>
-    </row>
-  </div>
-</div>
-    <p>&nbsp</p>
+  <p>&nbsp</p>
 
-    <!-- ****************************** Table ****************************** -->
+  <!-- ****************************** Table ****************************** -->
 
   <div class="col-md-6 col-md-offset-3">
     <table class="table table-result">
 
       <tbody>
         <tr class = ''>
-          <th scope="row">[x,y]</th>
+          <th scope="row">Sample</th>
           <td id= "xy1">1</td>
           <td id='xy2'>1</td>
           <td id='xy3'>1</td>
@@ -102,7 +100,7 @@
           <td id='xy5'>1</td>
         </tr>
         <tr class = ''>
-          <th scope="row">Preiction</th>
+          <th scope="row">Prediction</th>
           <td id='p1'>2</td>
           <td id='p2'>2</td>
           <td id='p3'>2</td>
@@ -141,6 +139,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/plot1.js"></script>
+  <script type="text/javascript" src="/static/js/plot2.js"></script>
+  <script type="text/javascript" src="/static/js/helper.js"></script>
   <script type="text/javascript" src="/static/js/logic.js"></script>
 
 </body>
