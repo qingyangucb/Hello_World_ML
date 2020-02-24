@@ -28,7 +28,7 @@
   <p>&nbsp</p>
   <div class = 'col-md-8 col-md-offset-2 intro'>
     <row>
-      <p>Welcome to the world of machine learning that is infinite in dimension. In this website I will show you how a machine actually learns, by bringing its complexity down to the most basic case, a 2D vector space.
+      <p>Welcome to the world of machine learning that is infinite in dimension. In this website I will show you how a machine actually learns, by bringing the complexity down to its most basic scenario, a 2D vector space.
       </p>
     </row>
   </div>
@@ -54,34 +54,35 @@
   <div class = "container">
     <div class="input col-md-1 col-md-offset-3">
       <row>
-        <input type="text" class = "interactive" id="direction1" placeholder=" Directions">
+        <input type="text" class = "inputs" id="directions" placeholder=" Directions">
       </row>
     </div>
     <div class="input col-md-1">
       <row>
-        <input type="text" class = "interactive" id="dataSize" placeholder="Sample Size">
+        <input type="text" class = "inputs" id="sampleSize" placeholder="Sample Size">
+      </row>
+    </div>
+        <div class="input col-md-1">
+      <row>
+        <input type="text" class = "inputs" id="accuracy" placeholder="Accuracy">
       </row>
     </div>
     <div class="button col-md-1">
       <row>
-        <button class = "interactive" onclick="generateData()">Initiate</button>
+        <button class = "interactive" onclick="initiate()">Initiate</button>
       </row>
     </div>
     <div class="button col-md-1">
       <row>
-        <button class = "interactive" onclick="TrainOne()">Train One</button>
+        <button class = "interactive" onclick="trainOne()">Train One</button>
       </row>
     </div>
     <div class="button col-md-1">
       <row>
-        <button class = "interactive" onclick="TrainAll()">Train All</button>
+        <button class = "interactive" onclick="trainAll()">Train All</button>
       </row>
     </div>
-    <div class="input col-md-1">
-      <row>
-        <input type="text" class = "interactive" id="dataSize" placeholder="Accuracy">
-      </row>
-    </div>
+
   </div>
   <p>&nbsp</p>
 
@@ -93,43 +94,44 @@
       <tbody>
         <tr class = ''>
           <th scope="row">Sample</th>
-          <td id= "xy1">1</td>
-          <td id='xy2'>1</td>
-          <td id='xy3'>1</td>
-          <td id='xy4'>1</td>
-          <td id='xy5'>1</td>
+          <td id="xy1"></td>
+          <td id='xy2'></td>
+          <td id='xy3'></td>
+          <td id='xy4'></td>
+          <td id='xy5'></td>
+
         </tr>
         <tr class = ''>
           <th scope="row">Prediction</th>
-          <td id='p1'>2</td>
-          <td id='p2'>2</td>
-          <td id='p3'>2</td>
-          <td id='p4'>2</td>
-          <td id='p5'>2</td>
+          <td id='p1'></td>
+          <td id='p2'></td>
+          <td id='p3'></td>
+          <td id='p4'></td>
+          <td id='p5'></td>
         </tr>
         <tr class = ''>
           <th scope="row">Error</th>
-          <td id='e1'>4</td>
-          <td id='e2'>4</td>
-          <td id='e3'>4</td>
-          <td id='e4'>4</td>
-          <td id='e5'>4</td>
+          <td id='e1'></td>
+          <td id='e2'></td>
+          <td id='e3'></td>
+          <td id='e4'></td>
+          <td id='e5'></td>
         </tr>
         <tr class = ''>
           <th scope="row">Neuron 1</th>
-          <td id='n11'>5</td>
-          <td id='n12'>5</td>
-          <td id='n13'>5</td>
-          <td id='n14'>5</td>
-          <td id='n15'>5</td>
+          <td id='n11'></td>
+          <td id='n12'></td>
+          <td id='n13'></td>
+          <td id='n14'></td>
+          <td id='n15'></td>
         </tr>
         <tr class = ''>
           <th scope="row">Neuron 2</th>
-          <td id='n21'>6</td>
-          <td id='n22'>6</td>
-          <td id='n23'>6</td>
-          <td id='n24'>6</td>
-          <td id='n25'>6</td>
+          <td id='n21'></td>
+          <td id='n22'></td>
+          <td id='n23'></td>
+          <td id='n24'></td>
+          <td id='n25'></td>
         </tr>
       </tbody>
     </table>

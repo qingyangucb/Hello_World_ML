@@ -9,7 +9,7 @@ function initiatePlot1(thetas1 = [0,1],thetas2 = [0,-1]) {
 		name: 'Direction 1',
 		mode: 'lines',
 		line: {
-			color: '#3C61EA',
+			color: '#E2281F',
 			width: 2
 		}
 	};
@@ -21,7 +21,7 @@ function initiatePlot1(thetas1 = [0,1],thetas2 = [0,-1]) {
 		name: 'Direction 2',
 		mode: 'lines',
 		line: {
-			color: '#E2281F',
+			color: '#3C61EA',
 			width: 2
 		}
 	};
@@ -51,11 +51,11 @@ function initiatePlot1(thetas1 = [0,1],thetas2 = [0,-1]) {
 			showgrid: false,
 			zeroline: true,
 			showline: false,
-			autotick: false,
-			ticks: 'outside',
-			tick0: 0,
-			dtick: .5,
-			showticklabels: true
+			// autotick: false,
+			// ticks: 'outside',
+			// tick0: 0,
+			// dtick: .5,
+			showticklabels: false
 		},
 		yaxis: {
 			autorange: false,
@@ -63,11 +63,11 @@ function initiatePlot1(thetas1 = [0,1],thetas2 = [0,-1]) {
 			showgrid: false,
 			zeroline: true,
 			showline: false,
-			autotick: false,
+			// autotick: false,
 			// ticks: 'outside',
-			tick0: 0,
-			dtick: .5,
-			showticklabels: true
+			// tick0: 0,
+			// dtick: .5,
+			showticklabels: false
 		},
 		font: {
 			family: 'sans-serif',

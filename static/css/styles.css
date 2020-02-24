@@ -97,8 +97,17 @@ canvas {
   text-align: center;
 }
 
-::placeholder {
-  color: #ff2400;
-  
+.inputs {
+  width: 85px;
+  height: 35px;
+  display: block;
+  margin-top: 0px;
+  font-family: “Copperplate Gothic Bold”, sans-serif;
+  color: #3C61EA;
+  /*text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 white;*/
+  font-size: 13px;
+  /*margin-left: 15px;*/  
+  font-weight: bold;
+  text-align: center;
 
 }
