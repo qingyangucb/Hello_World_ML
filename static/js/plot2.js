@@ -1,5 +1,7 @@
 // Initialize a plot using north and south as the default directions.
 function initiatePlot2(thetas1,thetas2) {
+	var plotHeight = 425;
+	var plotWidth = 550;
 
 
 	var line1 = {
@@ -29,8 +31,8 @@ function initiatePlot2(thetas1,thetas2) {
 	var layout = {
 
 		autosize: false,
-		width: 475,
-		height: 425,
+		width: plotWidth,
+		height: plotHeight,
 		hovermode: !1,
 		paper_bgcolor: 'rgba(0,0,0,0)',
 		plot_bgcolor: 'rgba(0,0,0,0)',
@@ -41,9 +43,9 @@ function initiatePlot2(thetas1,thetas2) {
 			t: 20,
 		},
 		legend: {
-			x: 1,
-			xanchor: 'right',
-			y: 1
+			// x: 1,
+			// xanchor: 'right',
+			// y: 1
 		},
 		xaxis: {
 			autorange: false,
@@ -71,7 +73,7 @@ function initiatePlot2(thetas1,thetas2) {
 		},
 		font: {
 			family: 'sans-serif',
-			size: 12,
+			size: 10,
 			color: '#FFFFFF'
 		},
 	};
@@ -89,6 +91,9 @@ function initiatePlot2(thetas1,thetas2) {
 
 // Initialize a plot using north and south as the default directions.
 function updatePlot2(thetas1, thetas2, xy) {
+	var plotHeight = 425;
+	var plotWidth = 550;
+
 	var line1 = {
 
 		x: [0,thetas1[0]],
@@ -125,11 +130,53 @@ function updatePlot2(thetas1, thetas2, xy) {
 		}
 	};
 
+	var shadow1 = thetas1[0]*xy[0]+thetas1[1]*xy[1];
+	var shadow2 = thetas2[0]*xy[0]+thetas2[1]*xy[1];
+	var shadow1x = shadow1*thetas1[0];
+	var shadow1y = shadow1*thetas1[1];
+	var shadow2x = shadow2*thetas2[0];
+	var shadow2y = shadow2*thetas2[1];
+
+	var name1 = 'Right Direction';
+	var name2 = 'Wrong Direction';
+
+	if (shadow1<shadow2) {
+
+		name1 = 'Wrong Direction';
+		name2 = 'Right Direction';
+	}
+
+	var line4 = {
+
+		x: [0,shadow1x,xy[0]],
+		y: [0,shadow1y,xy[1]],
+		name: `${name1}`,
+		mode: 'lines',
+		line: {
+			dash: 'dot',
+			color: '#E2281F',
+			width: 2
+		}
+	};
+
+	var line5 = {
+
+		x: [0,shadow2x,xy[0]],
+		y: [0,shadow2y,xy[1]],
+		name: `${name2}`,
+		mode: 'lines',
+		line: {
+			dash: 'dot',
+			color: '#3C61EA',
+			width: 2
+		}
+	};
+
 	var layout = {
 
 		autosize: false,
-		width: 475,
-		height: 425,
+		width: plotWidth,
+		height: plotHeight,
 		hovermode: !1,
 		paper_bgcolor: 'rgba(0,0,0,0)',
 		plot_bgcolor: 'rgba(0,0,0,0)',
@@ -140,9 +187,9 @@ function updatePlot2(thetas1, thetas2, xy) {
 			t: 20,
 		},
 		legend: {
-			x: 1,
-			xanchor: 'right',
-			y: 1
+			// x: 1,
+			// xanchor: 'right',
+			// y: 1
 		},
 		xaxis: {
 			autorange: false,
@@ -170,14 +217,14 @@ function updatePlot2(thetas1, thetas2, xy) {
 		},
 		font: {
 			family: 'sans-serif',
-			size: 12,
+			size: 10,
 			color: '#FFFFFF'
 		},
 	};
 
 
 
-	var data = [line1, line2, line3];
+	var data = [line1, line2, line3, line4, line5];
 
 	Plotly.newPlot('plot2', data, layout);
 
