@@ -66,8 +66,9 @@ function initiate() {
 }
 
 function trainOne() {
-	var url = 'trainOne' 
-	d3.json(url).then(function(results) {
+	console.log('trainOne called');
+	var url1 = 'trainOne';
+	d3.json(url1).then(function(results) {
 		// console.log(results)
 		delta = results[0];
 		tempA = results[1];
@@ -101,8 +102,8 @@ function trainOne() {
 		var thetas2yR = thetas2y.toFixed(2);
 		var thetas2R = [thetas2xR, thetas2yR];
 
-		var tempA1R = tempA[0][0].toFixed(2)+'%';
-		var tempA2R = tempA[0][1].toFixed(2)+'%';
+		var tempA1R = (tempA[0][0]*100).toFixed(0)+'%';
+		var tempA2R = (tempA[0][1]*100).toFixed(0)+'%';
 		var tempAR = [tempA1R, tempA2R];
 
 
@@ -136,56 +137,71 @@ function trainOne() {
 		})
 
 
+	var url2 = 'accuracyOne/' 
+	+ thetas1x + '/'+ thetas1y + '/' + thetas2x + '/' + thetas2y
+	+ '/' + D1x + '/'+ D1y + '/' + D2x + '/' + D2y;
+	d3.json(url2).then(function(results) {
+		accuracy = (results*100).toFixed(0)+'%'
+		document.getElementById('accuracy').value = accuracy;
+		document.getElementById('accuracy').style = "color: #3C61EA";
+	})
+
+
 }
 
-// function trainAll() {
-// 	var url = 'trainAll' 
-// 	d3.json(url).then(function(results) {
-// 		// console.log(results)
-// 		delta = results[0];
-// 		tempA = results[1];
-// 		tempError = results[2];
-// 		ans = results[3];
-// 		console.log(ans[0]);
-// 		console.log(tempA[0][0]);
-// 		x = results[4];
-// 		y = results[5];
-// 		xy = [x,y]	
-// 		thetas1x += delta[0][0];
-// 		thetas1y += delta[0][1];
-// 		thetas1 = [thetas1x, thetas1y]
-// 		thetas2x += delta[1][0];
-// 		thetas2y += delta[1][1];
-// 		thetas2 = [thetas2x, thetas2y]
-// 		// console.log(`thetas1x is ${thetas1x}`)
-// 		// console.log(`delta00 is ${delta[0][0]}`)
-// 		// console.log(`thetas1 is ${thetas1}`)
-// 		var xR = x.toFixed(2);
-// 		var yR = y.toFixed(2);
-// 		var xyR = [xR,yR];
-// 		var thetas1xR = thetas1x.toFixed(2);
-// 		var thetas1yR = thetas1y.toFixed(2);
-// 		var thetas1R = [thetas1xR, thetas1yR];
-// 		var thetas2xR = thetas2x.toFixed(2);
-// 		var thetas2yR = thetas2y.toFixed(2);
-// 		var thetas2R = [thetas2xR, thetas2yR];
+// console.log(`this is screen width ${window.innerWidth}`)
+// console.log(`this is screen height ${window.innerHeight}`)
+function trainAll() {
+	console.log('trainAll called');
+	var url1 = 'trainAll';
+	d3.json(url1).then(function(results) {
+		tabeCounter = 0;
+		delta = results[0];
 
-// 		var tempA1R = tempA[0][0].toFixed(2);
-// 		var tempA2R = tempA[0][1].toFixed(2);
-// 		var tempAR = [tempA1R, tempA2R];
+		thetas1x += delta[0][0];
+		thetas1y += delta[0][1];
+		thetas1 = [thetas1x, thetas1y]
+		thetas2x += delta[1][0];
+		thetas2y += delta[1][1];
+		thetas2 = [thetas2x, thetas2y]
+
+		var thetas1xR = thetas1x.toFixed(2);
+		var thetas1yR = thetas1y.toFixed(2);
+		var thetas1R = [thetas1xR, thetas1yR];
+		var thetas2xR = thetas2x.toFixed(2);
+		var thetas2yR = thetas2y.toFixed(2);
+		var thetas2R = [thetas2xR, thetas2yR];
+		for (var i = 0; i < 5; i++) {
+		  document.getElementById(`xy${i}`).style="color:#FFFFFF";
+		  document.getElementById(`xy${i}`).innerHTML="";
+		  document.getElementById(`p${i}`).style="color:#FFFFFF";
+		  document.getElementById(`p${i}`).innerHTML="";
+		  document.getElementById(`a${i}`).style="color:#FFFFFF";
+		  document.getElementById(`a${i}`).innerHTML="";
+		  document.getElementById(`m${i}`).style="color:#FFFFFF";
+		  document.getElementById(`m${i}`).innerHTML="";
+		  document.getElementById(`n${i}`).style="color:#FFFFFF";
+		  document.getElementById(`n${i}`).innerHTML="";
+		}
 
 		
+// print current values to table
 
-// 		document.getElementById(`xy${tableCounter}`).innerHTML = xyR;
-// 		document.getElementById(`p${tableCounter}`).innerHTML = tempAR;
-// 		document.getElementById(`a${tableCounter}`).innerHTML = ans;
-// 		document.getElementById(`m${tableCounter}`).innerHTML = thetas1R;
-// 		document.getElementById(`n${tableCounter}`).innerHTML = thetas2R;
-// 		tableCounter += 1
-// 		if (tableCounter ==5) {
-// 			tableCounter = 0;
-// 		}
+		document.getElementById('m0').innerHTML = thetas1R;
+		document.getElementById('m0').style="color:#FFFF00";
+		document.getElementById('n0').innerHTML = thetas2R;
+		document.getElementById('n0').style="color:#FFFF00";
 
-// 	})
+		}
 
-// }
+	)
+	// var url2 = 'accuracyOne/' 
+	// + thetas1x + '/'+ thetas1y + '/' + thetas2x + '/' + thetas2y
+	// + '/' + D1x + '/'+ D1y + '/' + D2x + '/' + D2y;
+	// d3.json(url2).then(function(results) {
+	// 	accuracy = (results*100).toFixed(0)+'%'
+	// 	document.getElementById('accuracy').value = accuracy;
+	// 	document.getElementById('accuracy').style = "color: #3C61EA";
+	// })
+
+}

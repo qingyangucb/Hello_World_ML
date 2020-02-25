@@ -1,5 +1,4 @@
 import numpy as np
-from keras.utils import to_categorical
 from scipy.special import softmax
 
 def unit_vector(vector):
@@ -39,7 +38,7 @@ def generateAnswer(x,y,directions):
 		elif index == 1:
 			answer = [0,1]
 		answers.append(answer)
-		print(answers)
+		# print(answers)
 
 	answers = np.asarray(answers)
 
@@ -88,7 +87,7 @@ def trainEpoch(x,y,thetas,directions):
 		tempAns = answers[i,:]
 		tempError = tempAns - tempA
 		delta += np.outer(tempError,point)
-	delta = delta/size
+	
 
 
 	return delta, z, answers
@@ -99,6 +98,7 @@ def testModel(x,y,thetas,directions):
 	count = 0
 	xy = np.column_stack((x,y))
 	z = np.matmul(xy, np.transpose(thetas))
+
 	for i in range(0, size):
 		if np.argmax(z[i]) == np.argmax(answers[i]):
 			count += 1

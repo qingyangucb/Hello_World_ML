@@ -80,35 +80,50 @@ def trainOneRoute():
 	answers = answers.tolist()
 	results = [delta,tempA,tempError,answers,x[counter],y[counter]]
 	counter += 1
-	print(thetas)
-	print('_____________________')
-	print(directions)
-	print('_____________________')
+	# print(thetas)
+	# print('_____________________')
+	# print(directions)
+	# print('_____________________')
 
 	return jsonify(results)	
 
-# @app.route("/trainAll")
-# def trainAllRoute():
-# 	global counter
-# 	global thetas
-# 	counter = 0
-# 	print(f'counter {counter}')
-# 	delta, tempA, tempError, answers = trainOne(x,y,thetas,directions)
-# 	# deltaR = np.around(delta, decimals=2)
-# 	# tempAR = np.around(tempA, decimals=2)
-# 	# tempErrorR = np.around(tempError, decimals=2)
-# 	# answersR = np.around(answers, decimals=2)
-# 	# xR = np.around(x[counter], decimals=2)
-# 	# yR = np.around(y[counter], decimals=2)
-	
-# 	thetas += delta
-# 	delta = delta.tolist()
-# 	tempError = tempError.tolist()
-# 	tempA = tempA.tolist()
-# 	answers = answers.tolist()
-# 	results = [delta,tempA,tempError,answers,x[counter],y[counter]]
 
-# 	return jsonify(results)	
+
+@app.route("/trainAll")
+def trainAllRoute():
+	global counter, directions
+	global thetas, x, y
+	counter = 0
+	print(f'counter {counter}')
+	delta = trainEpoch(x,y,thetas,directions)
+	# deltaR = np.around(delta, decimals=2)
+	# tempAR = np.around(tempA, decimals=2)
+	# tempErrorR = np.around(tempError, decimals=2)
+	# answersR = np.around(answers, decimals=2)
+	# xR = np.around(x[counter], decimals=2)
+	# yR = np.around(y[counter], decimals=2)
+	print('this is delta:')
+	print(delta)
+	print(type(delta))
+	# thetas += delta
+	delta = delta.tolist()
+
+	# print(thetas)
+	# print('_____________________')
+	# print(directions)
+	# print('_____________________')
+
+	return jsonify(delta)	
+
+@app.route("/accuracyOne/<thetas1x>/<thetas1y>/<thetas2x>/<thetas2y>/<D1x>/<D1y>/<D2x>/<D2y>")
+def accuracyOne(thetas1x,thetas1y,thetas2x,thetas2y,D1x,D1y,D2x,D2y):
+	global x, y
+	directions = np.array([[D1x,D1y],[D2x,D2y]])
+	directions = directions.astype(np.float)
+	thetas = np.array([[thetas1x,thetas1y],[thetas2x,thetas2y]])
+	thetas = thetas.astype(np.float)		
+	accuracy = testModel(x,y,thetas,directions)
+	return jsonify(accuracy)
 
 
 if __name__ == "__main__":
