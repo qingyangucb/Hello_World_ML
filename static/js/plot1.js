@@ -30,7 +30,7 @@ function initiatePlot1(thetas1 = [0,1],thetas2 = [0,-1]) {
 
 		autosize: false,
 		width: 475,
-		height: 315,
+		height: 425,
 		hovermode: !1,
 		paper_bgcolor: 'rgba(0,0,0,0)',
 		plot_bgcolor: 'rgba(0,0,0,0)',
@@ -87,24 +87,13 @@ function initiatePlot1(thetas1 = [0,1],thetas2 = [0,-1]) {
 
 
 
-// Initialize a plot using north and south as the default directions.
-function updateDir1(x,y) {
+
+function updatePlot1(thetas1, thetas2, xy) {
 	var line1 = {
 
-		x: [0,0],
-		y: [0,1],
+		x: [0,thetas1[0]],
+		y: [0,thetas1[1]],
 		name: 'Direction 1',
-		mode: 'lines',
-		line: {
-			color: '#3C61EA',
-			width: 2
-		}
-	};
-
-	var line2 = {
-		x: [0,0],
-		y: [0,-1],
-		name: 'Direction 2',
 		mode: 'lines',
 		line: {
 			color: '#E2281F',
@@ -112,10 +101,35 @@ function updateDir1(x,y) {
 		}
 	};
 
+	var line2 = {
+
+		x: [0,thetas2[0]],
+		y: [0,thetas2[1]],
+		name: 'Direction 2',
+		mode: 'lines',
+		line: {
+			color: '#3C61EA',
+			width: 2
+		}
+	};
+
+	var line3 = {
+
+		x: [0,xy[0]],
+		y: [0,xy[1]],
+		name: 'Sample',
+		mode: 'lines',
+		line: {
+			color: '#FFFF00',
+			width: 2
+		}
+	};
+
 	var layout = {
+
 		autosize: false,
 		width: 475,
-		height: 315,
+		height: 425,
 		hovermode: !1,
 		paper_bgcolor: 'rgba(0,0,0,0)',
 		plot_bgcolor: 'rgba(0,0,0,0)',
@@ -131,26 +145,28 @@ function updateDir1(x,y) {
 			y: 1
 		},
 		xaxis: {
-			autorange: true,
+			autorange: false,
+			range: [-1.15, 1.15],
 			showgrid: false,
 			zeroline: true,
 			showline: false,
-			autotick: false,
-			ticks: 'outside',
-			tick0: 0,
-			dtick: 2,
-			showticklabels: true
+			// autotick: false,
+			// ticks: 'outside',
+			// tick0: 0,
+			// dtick: .5,
+			showticklabels: false
 		},
 		yaxis: {
-			autorange: true,
+			autorange: false,
+			range: [-1.15, 1.15],
 			showgrid: false,
 			zeroline: true,
 			showline: false,
-			autotick: false,
+			// autotick: false,
 			// ticks: 'outside',
-			tick0: 0,
-			dtick: 2,
-			showticklabels: true
+			// tick0: 0,
+			// dtick: .5,
+			showticklabels: false
 		},
 		font: {
 			family: 'sans-serif',
@@ -161,7 +177,7 @@ function updateDir1(x,y) {
 
 
 
-	var data = [line1, line2];
+	var data = [line1, line2, line3];
 
 	Plotly.newPlot('plot1', data, layout);
 

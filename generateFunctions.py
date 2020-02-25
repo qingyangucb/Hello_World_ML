@@ -6,6 +6,8 @@ def unit_vector(vector):
     # convert the input vector to unit vector
     return vector / np.linalg.norm(vector)
 
+
+
 def angle_between(v1, v2):
 	# find the angle between two vectors v1 and v2.
 	v1_u = unit_vector(v1)
@@ -37,6 +39,7 @@ def generateAnswer(x,y,directions):
 		elif index == 1:
 			answer = [0,1]
 		answers.append(answer)
+		print(answers)
 
 	answers = np.asarray(answers)
 
@@ -51,9 +54,9 @@ def generateThetas():
 	thetas = trial-e
 	return thetas
 
-def softmax(x):
-	e_x = np.exp(x - np.max(x))
-	return (e_x / e_x.sum())
+# def softmax(x):
+# 	e_x = np.exp(x - np.max(x))
+# 	return (e_x / e_x.sum())
 
 def generateSamples(size):
 	# generate a list of x, y points with length size.
@@ -71,7 +74,7 @@ def trainOne(x,y,thetas,directions):
 	tempError = answers - tempA
 	delta = np.outer(tempError,xy)
 
-	return delta, z, answers
+	return delta, tempA, tempError, answers
 
 def trainEpoch(x,y,thetas,directions):
 	delta = 0
