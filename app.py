@@ -15,9 +15,9 @@ y = []
 size = 0
 thetas = np.random.rand(2,2)
 directions = np.random.rand(2,2)
-counter = 0
-print(directions)
-print(type(directions[0][0]))
+# counter = 0
+# print(directions)
+# print(type(directions[0][0]))
 
 # ----------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ def home():
 def makeSamples(sampleSize, thetas1x,thetas1y,thetas2x,thetas2y,D1x,D1y,D2x,D2y):
 	global size, x, y, thetas, directions, counter
 	size = int(sampleSize)
-	print(type(D1x))
+	# print(type(D1x))
 	# D1x = np.array(D1x)
 	# D1y = np.array(D1y)
 	# D2x = np.array(D2x)
@@ -94,8 +94,7 @@ def trainAllRoute():
 	global counter, directions
 	global thetas, x, y
 	counter = 0
-	print(f'counter {counter}')
-	delta = trainEpoch(x,y,thetas,directions)
+	delta, z, answers = trainEpoch(x,y,thetas,directions)
 	# deltaR = np.around(delta, decimals=2)
 	# tempAR = np.around(tempA, decimals=2)
 	# tempErrorR = np.around(tempError, decimals=2)
@@ -104,8 +103,8 @@ def trainAllRoute():
 	# yR = np.around(y[counter], decimals=2)
 	print('this is delta:')
 	print(delta)
-	print(type(delta))
-	# thetas += delta
+	
+	thetas += delta
 	delta = delta.tolist()
 
 	# print(thetas)

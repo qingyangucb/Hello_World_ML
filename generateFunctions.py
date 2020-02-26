@@ -87,7 +87,8 @@ def trainEpoch(x,y,thetas,directions):
 		tempAns = answers[i,:]
 		tempError = tempAns - tempA
 		delta += np.outer(tempError,point)
-	
+
+	delta = delta / size	
 
 
 	return delta, z, answers

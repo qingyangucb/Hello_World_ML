@@ -25,7 +25,7 @@ let speed;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  for (let i = 0; i < 800; i++) {
+  for (let i = 0; i < 600; i++) {
     stars[i] = new Star();
   }
 }
@@ -33,7 +33,7 @@ function setup() {
 
 
 function draw() {
-  speed = map(mouseX/2, 0, width, 0, 50);
+  speed = map((mouseX+mouseY)/3, 0, width, 0, 50);
   background(0);
   translate(width / 2, height / 2);
   for (let i = 0; i < stars.length; i++) {

@@ -55,7 +55,7 @@ function initiate() {
 	}
 
 
-	var size = document.getElementById('sampleSize').value;
+		size = document.getElementById('sampleSize').value;
 		// console.log(size);
 		var url = 'makeSamples/' + size + '/' 
 		+ thetas1x + '/'+ thetas1y + '/' + thetas2x + '/' + thetas2y
@@ -66,7 +66,8 @@ function initiate() {
 }
 
 function trainOne() {
-	console.log('trainOne called');
+
+	// console.log('trainOne called');
 	var url1 = 'trainOne';
 	d3.json(url1).then(function(results) {
 		// console.log(results)
@@ -152,18 +153,18 @@ function trainOne() {
 // console.log(`this is screen width ${window.innerWidth}`)
 // console.log(`this is screen height ${window.innerHeight}`)
 function trainAll() {
-	console.log('trainAll called');
+	// console.log('trainAll called');
 	var url1 = 'trainAll';
 	d3.json(url1).then(function(results) {
 		tabeCounter = 0;
-		delta = results[0];
+		delta = results;
 
 		thetas1x += delta[0][0];
 		thetas1y += delta[0][1];
-		thetas1 = [thetas1x, thetas1y]
+		thetas1 = [thetas1x, thetas1y];
 		thetas2x += delta[1][0];
 		thetas2y += delta[1][1];
-		thetas2 = [thetas2x, thetas2y]
+		thetas2 = [thetas2x, thetas2y];
 
 		var thetas1xR = thetas1x.toFixed(2);
 		var thetas1yR = thetas1y.toFixed(2);
@@ -192,16 +193,19 @@ function trainAll() {
 		document.getElementById('n0').innerHTML = thetas2R;
 		document.getElementById('n0').style="color:#FFFF00";
 
+		updatePlot1All(D1,D2);
+		updatePlot2All(normalize(thetas1),normalize(thetas2));
+
 		}
 
 	)
-	// var url2 = 'accuracyOne/' 
-	// + thetas1x + '/'+ thetas1y + '/' + thetas2x + '/' + thetas2y
-	// + '/' + D1x + '/'+ D1y + '/' + D2x + '/' + D2y;
-	// d3.json(url2).then(function(results) {
-	// 	accuracy = (results*100).toFixed(0)+'%'
-	// 	document.getElementById('accuracy').value = accuracy;
-	// 	document.getElementById('accuracy').style = "color: #3C61EA";
-	// })
+	var url2 = 'accuracyOne/' 
+	+ thetas1x + '/'+ thetas1y + '/' + thetas2x + '/' + thetas2y
+	+ '/' + D1x + '/'+ D1y + '/' + D2x + '/' + D2y;
+	d3.json(url2).then(function(results) {
+		accuracy = (results*100).toFixed(0)+'%'
+		document.getElementById('accuracy').value = accuracy;
+		document.getElementById('accuracy').style = "color: #3C61EA";
+	})
 
 }
